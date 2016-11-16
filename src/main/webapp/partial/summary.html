@@ -1,0 +1,35 @@
+
+<div class="container">
+	<div class="panel panel-info" ng-controller="DetailCtrl" style="margin-top: 50px;">
+	    <div class="panel-heading">
+	        <h3 class="panel-title">Order Summary</h3>
+	    </div>
+	    <div>
+	        <table class="table">
+	            <tr>
+	            	<td>Order Number</td>
+	                <td>First Name</td>
+	                <td>Last Name</td>
+	                <td>Order Status</td>
+	                <td>Order Date</td>
+	                <td>Shipped Date</td>
+	            </tr>
+	            <tr ng-repeat="order in orders">
+	                <td>
+	                	<div ng-if="order.orderStatus==='Shipped'">
+	                		<a href="#/orders/{{order.orderNumber}}" >{{order.orderNumber}}</a>
+	                	</div>
+	                	<div ng-if="order.orderStatus!=='Shipped'">
+	                		{{order.orderNumber}}
+	                	</div>
+	                </td>
+	                <td> {{order.firstName}}</td>
+	                <td> {{order.lastName}}</td>
+	                <td> {{order.orderStatus}}</td>
+	                <td> {{order.orderDate}}</td>
+	                <td> {{order.shipDate}}</td>
+	            </tr>   
+	        </table>
+	    </div>
+	</div>
+</div>
