@@ -1,6 +1,6 @@
 
 <div class="container">
-	<div class="panel panel-info" ng-controller="DetailCtrl" style="margin-top: 50px;">
+	<div class="panel panel-info" ng-controller="SummaryCtrl" style="margin-top: 50px;">
 	    <div class="panel-heading">
 	        <h3 class="panel-title">Order Summary</h3>
 	    </div>
@@ -14,7 +14,7 @@
 	                <td>Order Date</td>
 	                <td>Shipped Date</td>
 	            </tr>
-	            <tr ng-repeat="order in orders">
+	            <tr ng-repeat=" order in orders">
 	                <td>
 	                	<div ng-if="order.orderStatus==='Shipped'">
 	                		<a href="#/orders/{{order.orderNumber}}" >{{order.orderNumber}}</a>

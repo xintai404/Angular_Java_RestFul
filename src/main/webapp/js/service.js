@@ -7,7 +7,6 @@ angular.module("orderSystemApp")
     	var orderfac = {};
 
     	orderfac.getOrderSummery= function(first_name, last_name){
-    		var aa={};
         	return $http({
                 method  : 'GET',
                 url     : baseURL+'/rest/orders',
@@ -18,6 +17,14 @@ angular.module("orderSystemApp")
                 }
             });
 
+    	};
+    	
+    	orderfac.getOrderDetail = function(order_number){
+    		return $http({
+    			method : 'GET',
+    			url    : baseURL +'/rest/orders/'+order_number,
+    			headers:{'Content-Type' : 'application/json'}
+    		});
     	}
     	
     	

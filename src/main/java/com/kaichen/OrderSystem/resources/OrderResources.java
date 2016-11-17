@@ -12,6 +12,7 @@ import com.kaichen.OrderSystem.dao.OrderDAO;
 import com.kaichen.OrderSystem.db.ConnectionFactory;
 import com.kaichen.OrderSystem.models.OrderDetail;
 import com.kaichen.OrderSystem.models.OrderSummary;
+import com.kaichen.OrderSystem.services.OrderService;
 
 import java.sql.Connection;
 
@@ -20,34 +21,22 @@ import java.util.List;
 
 @Path("/")
 public class OrderResources {
-     
+    
+	private OrderService orderService = new OrderService();
+    
 	@GET
 	@Path("orders")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<OrderSummary> getOrderSummery(@DefaultValue("") @QueryParam("first_name") String first_name,
-			                                  @DefaultValue("") @QueryParam("last_name") String last_name)
+	public List<OrderSummary> getOrderSummery(@DefaultValue("") @QueryParam("first_name") String firstName,
+			                                  @DefaultValue("") @QueryParam("last_name") String lastName)
 	{
-		List<OrderSummary> list=null;
-		try{
-			OrderDAO dao = new OrderDAO();
-			list = dao.getOrderSummary(first_name, last_name);
-		}catch(Exception e){
-			e.printStackTrace();
-		}    
-		return list;
+		return orderService.getOrderSummeryByName(firstName, lastName);
 	}
 	   
 	@GET
 	@Path("orders/{orderId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<OrderDetail> getOrderDetail(@PathParam("orderId") Integer orderId){
-		List<OrderDetail> list = null;
-		try{
-			OrderDAO dao = new OrderDAO();
-			list = dao.getOrderDetail(orderId);
-		}catch(Exception e){
-			e.printStackTrace();
-		}    
-		return list;
+	public List<OrderDetail> getOrderDetail(@PathParam("orderId") Integer orderNumber){
+		return orderService.getOrderDetailByNumber(orderNumber);
 	}
 }

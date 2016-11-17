@@ -9,11 +9,11 @@ angular.module('orderSystemApp', ['ngRoute'])
 	})
 	.when('/summary/:person', {
 		templateUrl: 'partial/summary.html',
-		controller: 'DetailCtrl'
+		controller: 'SummaryCtrl'
 	})
 	.when('/orders/:id', {
 		templateUrl: 'partial/detail.html',
-		controller: ''
+		controller: 'DetailCtrl'
 	})
 	.otherwise('/');
 });

@@ -72,7 +72,7 @@ public class OrderDAO {
 				int quantity  = rs.getInt("quantityOrdered");
 				String price = rs.getString("priceEach");
 				
-				System.out.printf("%d %s %s %s %d %s\n",orderNumber, productCode, productName, productDescription, quantity, price);
+				//System.out.printf("%d %s %s %s %d %s\n",orderNumber, productCode, productName, productDescription, quantity, price);
 				list.add(new OrderDetail(orderNumber, productCode, productName, productDescription, quantity, price));
 			}
 		}finally{
