@@ -10,6 +10,8 @@ import javax.ws.rs.core.MediaType;
 
 import com.kaichen.OrderSystem.dao.OrderDAO;
 import com.kaichen.OrderSystem.db.ConnectionFactory;
+import com.kaichen.OrderSystem.models.FirstName;
+import com.kaichen.OrderSystem.models.LastName;
 import com.kaichen.OrderSystem.models.OrderDetail;
 import com.kaichen.OrderSystem.models.OrderSummary;
 import com.kaichen.OrderSystem.services.OrderService;
@@ -24,6 +26,23 @@ public class OrderResources {
     
 	private OrderService orderService = new OrderService();
     
+	@GET
+	@Path("firstnames")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<FirstName> getAllFirstNames()
+	{
+		return orderService.getAllFirstNames();
+	}
+	
+	@GET
+	@Path("lastnames")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<LastName> getAllLastNames()
+	{
+		return orderService.getAllLastNames();
+	}
+	
+	
 	@GET
 	@Path("orders")
 	@Produces(MediaType.APPLICATION_JSON)

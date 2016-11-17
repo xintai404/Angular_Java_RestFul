@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('orderSystemApp', ['ngRoute'])
+angular.module('orderSystemApp', ['ngRoute', 'ui.bootstrap'])
 .config(function($routeProvider) {
 	$routeProvider
 	.when('/',{

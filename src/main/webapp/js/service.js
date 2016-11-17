@@ -16,7 +16,7 @@ angular.module("orderSystemApp")
                 	last_name : last_name
                 }
             });
-
+            
     	};
     	
     	orderfac.getOrderDetail = function(order_number){
@@ -26,7 +26,26 @@ angular.module("orderSystemApp")
     			headers:{'Content-Type' : 'application/json'}
     		});
     	}
-    	
-    	
     	return orderfac;
+    }])
+    
+    .factory("nameFactory", ['$http', 'baseURL', function($http, baseURL){
+    	var namefac = {}
+    	
+    	namefac.getAllFirstNames=function(){
+    		return $http({
+    			method: 'GET',
+    			url    : baseURL +'/rest/firstnames/',
+    			headers:{'Content-Type' : 'application/json'}
+    		});
+    	}
+    	
+    	namefac.getAllLastNames=function(){
+    		return $http({
+    			method: 'GET',
+    			url    : baseURL +'/rest/lastnames/',
+    			headers:{'Content-Type' : 'application/json'}
+    		});
+    	}
+    	return namefac;
     }]);

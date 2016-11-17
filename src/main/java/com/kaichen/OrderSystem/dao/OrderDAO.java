@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.kaichen.OrderSystem.db.ConnectionFactory;
+import com.kaichen.OrderSystem.models.FirstName;
+import com.kaichen.OrderSystem.models.LastName;
 import com.kaichen.OrderSystem.models.OrderDetail;
 import com.kaichen.OrderSystem.models.OrderSummary;
 
@@ -80,6 +82,49 @@ public class OrderDAO {
 		}
 		
 		return list;
+	}
+	
+	public List<FirstName> getFirstNameList() throws SQLException{
+		ResultSet rs = null;
+		List<FirstName>list = new ArrayList<FirstName>();
+		
+		String query = "select DISTINCT contactFirstName from customers";
+  
+		try{
+			connection = ConnectionFactory.getConnection();
+			statement  = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while(rs.next()){
+				String contactFirstName = rs.getString("contactFirstName");
+				
+				list.add(new FirstName(contactFirstName));
+			}
+		}finally{
+			close(connection,statement, rs);
+		}
+		
+		return list;
+	}
+	
+	public List<LastName> getLastNameList() throws SQLException{
+		ResultSet rs = null;
+		List<LastName>list = new ArrayList<LastName>();
+		
+		String query = "select DISTINCT contactLastName from customers";
+  
+		try{
+			connection = ConnectionFactory.getConnection();
+			statement  = connection.createStatement();
+			rs = statement.executeQuery(query);
+			while(rs.next()){
+				String contactLastName = rs.getString("contactLastName");
+				
+				list.add(new LastName(contactLastName));
+			}
+		}finally{
+			close(connection,statement, rs);
+		}
+		return list;		
 	}
 	private void close(Connection myConn, Statement myStmt,
 			ResultSet myRs) throws SQLException {
